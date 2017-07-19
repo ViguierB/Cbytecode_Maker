@@ -1,0 +1,15 @@
+##Binary files
+*.a
+*.o
+cbcmaker
+
+##Test files/folders
+tests/
+
+##Tmp files/folders
+*~
+*\#
+\#*
+.\#*
+.DS_Store
+cbcmaker.dSYM/
