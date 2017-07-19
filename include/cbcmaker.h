@@ -1,7 +1,7 @@
 #ifndef CBCMAKER_H
 # define CBCMAKER_H
 
-# define READ_LENGHT    2
+# define READ_LENGHT    2048
 # define NL_AT          14
 
 typedef struct  s_target
