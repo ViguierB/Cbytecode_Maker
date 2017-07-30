@@ -8,6 +8,8 @@ _OBJ	=	$(SRC:.c=.o)
 
 OBJ		=	$(patsubst %,$(ODIR)/%,$(_OBJ))
 
+ISTL_D	=	/usr/local/bin
+
 NAME	=	cbcmaker
 
 all		:	mkobj $(NAME)
@@ -30,6 +32,9 @@ fclean		:	clean
 re		:	fclean all
 
 jistl	:	all
-	cp $(NAME) /usr/local/bin
+	cp $(NAME) $(ISTL_D)
+
+uninstall	:
+	rm -f $(patsubst %,$(ISTL_D)/%,$(NAME))
 
 install	:	jistl fclean
