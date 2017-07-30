@@ -28,3 +28,8 @@ fclean		:	clean
 	rm -f $(NAME)
 
 re		:	fclean all
+
+jistl	:	all
+	cp $(NAME) /usr/local/bin
+
+install	:	jistl fclean
