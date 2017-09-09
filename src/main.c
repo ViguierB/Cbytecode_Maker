@@ -8,6 +8,9 @@
 #include <time.h>
 #include "cbcmaker.h"
 
+/*
+**  Get next Arg
+*/
 char **next_arg(int ac, char **av, int *i, char **target)
 {
     while (*i < ac && !(*av))
@@ -21,9 +24,12 @@ char **next_arg(int ac, char **av, int *i, char **target)
     return (av + 1);
 }
 
+/*
+**  Parse arguments
+*/
 void arg_parser(int ac, char **av, t_target *target)
 {
-    for (int i = 1; i < ac; i++)
+    for (int i = 1; i < ac; i++) // search -h on args list.
     {
         if (av[i] && !strcmp(av[i], "-h") && ac > i + 1 && av[i + 1])
         {
@@ -38,6 +44,9 @@ void arg_parser(int ac, char **av, t_target *target)
     av = next_arg(ac, av, &i, &(target->var_name));
 }
 
+/*
+**  Print Epitech Header on the top of file.
+*/
 void print_header(FILE *out, t_target *target)
 {
     char        date_buff[256];
@@ -77,11 +86,12 @@ void compute(t_target *target)
     {
         print_header(out, target);
     }
-    fprintf(out, "const char *%s = (const char[])\n\t{\n\t\t", target->var_name);
+    // Print variable declaration.
+    fprintf(out, "const char *%s = (const char[])\n\t{\n\t\t", target->var_name); 
     while ((readed = read(fd, buffer, READ_LENGHT)) > 0)
     {
         i = 0;
-        if (first)
+        if (first) //Executed just 1 time.
         {
             fprintf(out, "0x%.2hhx", buffer[0]);
             first = 0;
